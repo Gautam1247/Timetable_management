@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <div>
+          <div class="brand">
+            <div class="brand-logo">TM</div>
+            <div>
+              <h2>Admin Portal</h2>
+              <p>Timetable System</p>
+            </div>
+          </div>
+
+          <div class="sidebar-profile">
+            <div class="profile-avatar" id="adminAvatar">A</div>
+            <h3 id="adminNameSide">Admin User</h3>
+            <p id="adminRoleSide">System Administrator</p>
+
+            <div class="mini-profile-info">
+              <span id="adminUsernameSide">Username: admin</span>
+              <span id="adminAccessSide">Access: Full Control</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="hero" id="overview">
+          <div class="hero-text">
+            <p class="welcome-tag">Dashboard</p>
+            <h1>Admin Scheduling Overview</h1>
+            <p>
+              Manage academic resources, create section timetables, and monitor
+              faculty-wise schedules from one dashboard.
+            </p>
+          </div>
+
+          <button id="logoutBtn" class="top-logout-btn">Logout</button>
+        </section>
+
+        <section class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-title">Faculty</p>
+            <h3 id="facultyCount">0</h3>
+          </div>
+          <div class="stat-card">
+            <p class="stat-title">Subjects</p>
+            <h3 id="subjectCount">0</h3>
+          </div>
+          <div class="stat-card">
+            <p class="stat-title">Rooms</p>
+            <h3 id="roomCount">0</h3>
+          </div>
+          <div class="stat-card">
+            <p class="stat-title">Sections</p>
+            <h3 id="sectionCount">0</h3>
+          </div>
+          <div class="stat-card">
+            <p class="stat-title">Timetable Entries</p>
+            <h3 id="timetableCount">0</h3>
+          </div>
+        </section>
+
+        <section class="module-cards" id="moduleCards">
+          <button
+            class="module-card blue"
+            data-module="masterDataModule"
+            type="button"
+          >
+            <div class="module-card-title">Master Data Management</div>
+            <div class="module-card-subtitle">
+              Manage faculty, subjects, rooms and sections
+            </div>
+          </button>
+
+          <button
+            class="module-card yellow"
+            data-module="studentTimetableModule"
+            type="button"
+          >
+            <div class="module-card-title">Student Timetable</div>
+            <div class="module-card-subtitle">
+              Create and view section timetable
+            </div>
+          </button>
+
+          <button
+            class="module-card green"
+            data-module="facultyTimetableModule"
+            type="button"
+          >
+            <div class="module-card-title">Faculty Timetable</div>
+            <div class="module-card-subtitle">
+              Create and view faculty timetable
+            </div>
+          </button>
+        </section>
+
+        <section id="moduleWorkspace">
+          <!-- MASTER DATA MODULE -->
+          <section id="masterDataModule" class="module-panel">
+            <div class="card section-block">
+              <div class="card-header">
+                <h2>Master Data Management</h2>
+              </div>
+
+              <div class="forms-grid">
+                <form id="facultyForm" class="form-card">
+                  <h3>Add Faculty</h3>
+                  <input
+                    type="text"
+                    id="faculty_name"
+                    placeholder="Faculty Name"
+                    required
+                  />
+                  <input type="email" id="faculty_email" placeholder="Email" />
+                  <input
+                    type="text"
+                    id="faculty_department"
+                    placeholder="Department"
+                  />
+                  <button type="submit">Add Faculty</button>
+                </form>
+
+                <form id="subjectForm" class="form-card">
+                  <h3>Add Subject</h3>
+                  <input
+                    type="text"
+                    id="subject_name"
+                    placeholder="Subject Name"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="subject_code"
+                    placeholder="Subject Code"
+                    required
+                  />
+                  <input
+                    type="number"
+                    id="subject_semester"
+                    placeholder="Semester"
+                    required
+                  />
+                  <button type="submit">Add Subject</button>
+                </form>
+
+                <form id="roomForm" class="form-card">
+                  <h3>Add Room</h3>
+                  <input
+                    type="text"
+                    id="room_name"
+                    placeholder="Room Name"
+                    required
+                  />
+                  <input type="text" id="room_type" placeholder="Room Type" />
+                  <input
+                    type="number"
+                    id="room_capacity"
+                    placeholder="Capacity"
+                  />
+                  <button type="submit">Add Room</button>
+                </form>
+
+                <form id="sectionForm" class="form-card">
+                  <h3>Add Section</h3>
+                  <input
+                    type="text"
+                    id="section_name"
+                    placeholder="Section Name"
+                    required
+                  />
+                  <input
+                    type="number"
+                    id="section_semester"
+                    placeholder="Semester"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="section_branch"
+                    placeholder="Branch"
+                    required
+                  />
+                  <button type="submit">Add Section</button>
+                </form>
+              </div>
+            </div>
+          </section>
+
+          <!-- STUDENT TIMETABLE MODULE -->
+          <section id="studentTimetableModule" class="module-panel">
+            <div class="card section-block">
+              <div class="card-header">
+                <h2>Student Timetable Management</h2>
+              </div>
+
+              <form id="timetableForm" class="timetable-form">
+                <select id="section_id" required>
+                  <option value="">Select Section</option>
+                </select>
+
+                <select id="day" required>
+                  <option value="">Select Day</option>
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                </select>
+
+                <select id="slot_id" required>
+                  <option value="">Select Time Slot</option>
+                </select>
+
+                <select id="subject_id" required>
+                  <option value="">Select Subject</option>
+                </select>
+
+                <select id="faculty_id" required>
+                  <option value="">Select Faculty</option>
+                </select>
+
+                <select id="room_id" required>
+                  <option value="">Select Room</option>
+                </select>
+
+                <button type="submit">Add Timetable Entry</button>
+              </form>
+            </div>
+
+            <div class="card section-block">
+              <div class="card-header">
+                <h2>Section Timetable View</h2>
+                <div class="inline-filter">
+                  <select id="sectionViewSelect">
+                    <option value="">Select Section to View</option>
+                  </select>
+                  <button id="refreshBtn" class="secondary-btn" type="button">
+                    Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-wrapper">
+                <table class="timetable-grid">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wednesday</th>
+                      <th>Thursday</th>
+                      <th>Friday</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sectionTimetableGridBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <section class="card timetable-list-card">
+              <div class="card-header">
+                <h2>All Timetable Entries</h2>
+              </div>
+
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Slot</th>
+                      <th>Time</th>
+                      <th>Subject</th>
+                      <th>Faculty</th>
+                      <th>Room</th>
+                      <th>Section</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="timetableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <!-- FACULTY TIMETABLE MODULE -->
+          <section id="facultyTimetableModule" class="module-panel">
+            <div class="card section-block">
+              <div class="card-header">
+                <h2>Faculty Timetable Management</h2>
+              </div>
+
+              <form id="facultyTimetableForm" class="timetable-form">
+                <select id="faculty_tt_faculty_id" required>
+                  <option value="">Select Faculty</option>
+                </select>
+
+                <select id="faculty_tt_section_id" required>
+                  <option value="">Select Section</option>
+                </select>
+
+                <select id="faculty_tt_day" required>
+                  <option value="">Select Day</option>
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                </select>
+
+                <select id="faculty_tt_slot_id" required>
+                  <option value="">Select Time Slot</option>
+                </select>
+
+                <select id="faculty_tt_subject_id" required>
+                  <option value="">Select Subject</option>
+                </select>
+
+                <select id="faculty_tt_room_id" required>
+                  <option value="">Select Room</option>
+                </select>
+
+                <button type="submit">Add Faculty Timetable Entry</button>
+              </form>
+            </div>
+
+            <div class="card section-block">
+              <div class="card-header">
+                <h2>Faculty Timetable View</h2>
+                <div class="inline-filter">
+                  <select id="facultyViewSelect">
+                    <option value="">Select Faculty to View</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="table-wrapper">
+                <table class="timetable-grid">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wednesday</th>
+                      <th>Thursday</th>
+                      <th>Friday</th>
+                    </tr>
+                  </thead>
+                  <tbody id="facultyTimetableGridBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

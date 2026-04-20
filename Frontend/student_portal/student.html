@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal</title>
+  <link rel="stylesheet" href="student.css" />
+</head>
+<body>
+  <div class="student-layout">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-logo">TM</div>
+          <div>
+            <h2>Student Portal</h2>
+            <p>Timetable System</p>
+          </div>
+        </div>
+
+        <div class="sidebar-profile">
+          <div class="profile-avatar" id="avatarInitial">S</div>
+          <h3 id="profileNameSide">Student Name</h3>
+          <p id="profileRollSide">Roll No</p>
+          <div class="mini-profile-info">
+            <span id="profileBranchSide">Branch</span>
+            <span id="profileSemesterSide">Semester</span>
+            <span id="profileSectionSide">Section</span>
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+    </aside>
+
+    <main class="main-content">
+     <section class="hero" id="overview">
+  <div class="hero-text">
+    <p class="welcome-tag">Dashboard</p>
+    <h1>Student Overview</h1>
+  </div>
+  
+   <button id="logoutBtn" class="top-logout-btn">Logout</button>
+  
+</section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-title ">Total Weekly Classes</p>
+          <h3 id="totalClasses">0</h3>
+        </div>
+
+        <div class="stat-card">
+          <p class="stat-title">Section</p>
+          <h3 id="studentSection">-</h3>
+        </div>
+
+        <div class="stat-card">
+          <p class="stat-title">Semester</p>
+          <h3 id="studentSemester">-</h3>
+        </div>
+
+        <div class="stat-card">
+          <p class="stat-title">Branch</p>
+          <h3 id="studentbranch">-</h3>
+        </div>
+      </section>
+
+      
+
+     <section class="card timetable-card">
+  <div class="card-header">
+  <h2>Weekly Timetable</h2>
+
+  <div class="header-actions">
+    <button id="refreshBtn" class="secondary-btn" type="button">Refresh</button>
+    <button id="downloadPdfBtn" class="secondary-btn pdf-btn" type="button">Download PDF</button>
+  </div>
+</div>
+
+  <div class="table-wrapper">
+    <table class="timetable-grid">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+        </tr>
+      </thead>
+      <tbody id="weeklyTimetableGridBody"></tbody>
+    </table>
+  </div>
+</section>
+    </main>
+  </div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+ 
+<script src="student.js"></script>
+</body>
+</html>

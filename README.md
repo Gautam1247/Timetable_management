@@ -1,46 +1,95 @@
-# Timetable_management
+# Online Timetable Management System
 
-A small timetable management project with a Node backend and static frontend pages.
+A web-based **Online Timetable Management System** built to simplify the process of creating, managing, and viewing academic timetables in a college environment.
 
-## Structure
+This project provides a centralized platform for timetable administration and personalized timetable access for students. It reduces manual effort, improves schedule organization, and offers a clean, role-based user experience.
 
-- `Backend/` — Node.js backend (`server.js`, `package.json`)
-- `Frontend/` — Static frontend (admin/faculty/login/student portals)
+---
 
-## Quick start
+## Features
 
-Backend:
+### Admin Portal
+- Secure admin login
+- Dashboard with overview statistics
+- Master Data Management for:
+  - Faculty
+  - Subjects
+  - Rooms
+  - Sections
+- Section-wise timetable creation
+- Faculty timetable derived automatically from assigned section timetable entries
+- Grid-based timetable viewing
+- Fixed sidebar with profile section
+- Dynamic dashboard cards for module switching
+
+### Student Portal
+- Secure student login
+- Personalized timetable access
+- Student profile shown in sidebar
+- Weekly timetable displayed in grid format
+- Clean and professional dashboard interface
+
+### Core System Features
+- Centralized timetable data storage
+- MySQL database integration
+- Slot-based timetable structure
+- Timetable organized by:
+  - Day
+  - Time Slot
+  - Section
+  - Subject
+  - Faculty
+  - Room
+
+---
+
+## Tech Stack
+
+### Frontend
+- HTML
+- CSS
+- JavaScript
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MySQL
+
+### Tools Used
+- Visual Studio Code
+- MySQL Workbench
+- Git & GitHub
+
+---
+
+## Project Structure
 
 ```bash
-cd Backend
-npm install
-node server.js
-```
+Frontend/
+  admin_portal/
+    admindashboard.html
+    admin.css
+    admin.js
 
-Frontend:
+  faculty_portal/
+    (planned / under development)
 
-- Open the HTML files in `Frontend/` (for example, `Frontend/login_portal/login.html`) in a browser.
+  login_portal/
+    assets/
+      bg.png
+    login.html
+    login.css
+    login.js
 
-## Publish to GitHub (example)
+  student_portal/
+    student.html
+    student.css
+    student.js
 
-If you have the GitHub CLI installed (`gh`):
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-gh repo create my-timetable-management --public --source=. --remote=origin --push
-```
-
-Or create a repo on github.com and push your local repo to it:
-
-```bash
-git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git
-git branch -M main
-git push -u origin main
-```
-
-## Notes
-
-- Update `LICENSE` with your name and the correct year.
-- Add any repository-level documentation or contribution guidelines as needed.
+Backend/
+  .env
+  db.js
+  package.json
+  server.js
